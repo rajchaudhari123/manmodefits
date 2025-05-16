@@ -1,0 +1,130 @@
+[
+    {
+        "id": 1,
+        "name": "t shirt",
+        "price": "399 ₹",
+        "images": [
+            "images/a1.jpg"
+        ],
+        "category": "Accessories",
+        "isTrending":true,
+        "description": "plane premium qulity t shirt for men  "
+    },
+    {
+        "id": 2,
+        "name": "Miley Triangle Hair Scarf",
+        "price": "$22.00",
+        "images": [
+            "images/a2.jpg",
+            "images/a3.jpg",
+            "images/Accessories/scrf3.webp"
+        ],
+        "category": "Accessories",
+        "isTrending":true,
+        "description": "The Miley Triangle Hair Scarf is a versatile accessory that can be styled in multiple ways. Made from soft, breathable fabric."
+    },
+    {
+        "id": 3,
+        "name": "Platform Canvas Sneakers",
+        "price": "$77.00",
+        "images": [
+            "images/a3.jpg"
+        ],
+        "category": "Accessories",
+        "isTrending":true,
+        "description": "Platform Canvas Sneakers provide both comfort and height. Ideal for casual outings and adding a trendy touch to your look."
+    },
+    {
+        "id": 4,
+        "name": "Quilted Heeled Mule Sandal",
+        "price": "$128.00",
+        "images": [
+            "images/a4.jpg"
+        ],
+        "category": "Accessories",
+        "isTrending":true,
+        "description": "The Quilted Heeled Mule Sandal combines elegance and comfort. Perfect for dressing up any outfit with a touch of sophistication."
+    },
+  
+    {
+        "id": 6,
+        "name": "Adilette Slide Sandal",
+        "price": "$85.00",
+        "images": [
+            "images/a6.jpg",
+            "images/Accessories/Adilette-Slide-Sandal_color_01.webp"
+        ],
+        "category": "Accessories",
+        "isTrending":true,
+        "description": "Adilette Slide Sandals are perfect for casual wear. They feature a comfortable footbed and easy slip-on design."
+    },
+    {
+        "id": 7,
+        "name": "Pieces Short Sleeve Sweater",
+        "price": "$100.00",
+        "images": [
+            "images/a7.jpg",
+            "images/woman/Pieces-short-sleeve-sweater_02.webp",
+            "images/woman/Pieces-short-sleeve-sweater_03.webp"
+        ],
+        "category": "Accessories",
+        "isTrending": true,
+        "description": "The Pieces Short Sleeve Sweater is a cozy and stylish addition to your wardrobe. Made from soft, breathable material."
+    },
+ 
+    
+ 
+    {
+        "id": 11,
+        "name": "Straw Floppy Hat",
+        "price": "$54.00",
+        "images": [
+            "images/a11.jpg"
+        ],
+        "category": "Accessories",
+        "isTrending":true,
+        "description": "The Straw Floppy Hat is a stylish accessory for sunny days. It offers great sun protection while adding a chic touch to your outfit."
+    },
+    {
+        "id": 12,
+        "name": "Cat-Eye Glasses 20257",
+        "price": "$86.00",
+        "images": [
+            "images/a12.jpg"
+        ],
+        "category": "Accessories",
+        "isTrending":true,
+        "description": "Cat-Eye Glasses 20257 feature a classic design with a modern twist. Perfect for adding a sophisticated touch to any look."
+    },
+    {
+        "id": 13,
+        "name": "Pride Sport Hip Pack",
+        "price": "$39.00",
+        "images": [
+            "images/shirt1.jpg",
+            "images/Bags/Pride-Sport-Hip-Pack-_03.webp"
+        ],
+        "category": "Bags",
+        "isTrending":true,
+        "description": "The Pride Sport Hip Pack is perfect for carrying essentials hands-free. Features a vibrant design and multiple compartments for convenience."
+    },
+    {
+        "id": 14,
+        "name": "Dance Bag Nylon",
+        "price": "$18.00",
+        "images": [
+            "images/shirt2.jpg",
+            "images/Bags/p27-1_1bcb95c6-a3da-4de5-b15e-ec08d4cb84b9.webp"
+        ],
+        "category": "Bags",
+        "isTrending":true,
+        "description": "The Dance Bag Nylon is lightweight and durable, ideal for carrying dance gear or gym essentials. Features a sleek design and ample storage space."
+    }
+ 
+ 
+   
+
+
+
+
+]
