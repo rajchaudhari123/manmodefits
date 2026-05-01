@@ -6,9 +6,9 @@
     <meta name="description" content="Discover the latest trends in fashion for 
     women and men at SA FashionStyle. Shop our wide selection of clothes, bags,
     jewelry, and more. Elevate your style with our curated collections.">
-    <meta name="keywords" content="clothes, women, men, fashion, bags, jewelry, SA FashionStyle, latest trends, stylish clothing, accessories">
-    <meta name="author" content="SA_FashionStyle">
-    <link rel="icon" href="images/logowhite.jpg" type="image/x-icon">
+    <meta name="keywords" content="clothes, women, men, fashion, bags, jewelry, manmodefits, latest trends, stylish clothing, accessories">
+    <meta name="author" content="manmodefits">
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
     <!-- css -->
    
     <link rel="stylesheet" href="Style/cartPage.css">
@@ -16,11 +16,11 @@
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,80₀;1,9₀₀&family=Rubik:ital,wght@₀,3₀₀..9₀₀;1,3₀₀..9₀₀&display=swap" rel="stylesheet">
     <!-- icon -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <title>SA__FashionStyle</title>
+    <title>manmodefits</title>
 </head>
 <body>
     <header class="container" id="header">
@@ -34,7 +34,7 @@
                     <ion-icon name="logo-whatsapp"></ion-icon>
                 </a>
               </div>
-              <img src="images/logo_block.jpg" alt="page logo" id="logo">
+              <img src="images/logo.jpg" alt="page logo" id="logo">
               <div class="header_actions">
                 <div id="display_login">
                   <span id="user_name">Amira</span>
@@ -56,7 +56,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="products.html">Shop</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="login.html">Contact</a></li>
                 </ul>
             </menu>
         </nav>
@@ -102,14 +102,17 @@
                             </div>
                             <div class="Delivery">
                                 <h4>Delivery</h4>
-                                <span id="Delivery">$70.00</span>
+                                <span id="Delivery">₹70.00 </span>
                             </div>
                             <div>
                                 <h4>Total Order</h4>
                                 <span id="total_order"></span>
                             </div>
                         </div>
-                        <button class="checkout" onclick="sendOrderViaWhatsApp()" >Check Out</button>
+                         <button class="checkout" onclick="sendOrderViaWhatsApp()">Check Out</button>
+
+                        <button class="checkout" onclick="onlinePayment()">Online Pay</button>
+                      
                     </div>
                  </div>
              </div>
@@ -140,7 +143,7 @@
     <footer class="footer black-footer">
         <div class="footer-top">
            <div class="footer-logo">
-               <img src="images/logo_block.jpg" alt="logo" width="140">
+               <img src="images/logo.jpg" alt="logo" width="140">
                <p>The customer is at the heart of our unique business model, which includes design.</p>
            </div>
            <div class="footer-list">
@@ -168,7 +171,7 @@
        <div class="footer-bottom">
            <p class="footer-company-name">
                © 2024 All right reserved.Made with <ion-icon name="heart"></ion-icon>
-                by <a href="https://www.upwork.com/freelancers/~01a11a163a8ee98a35" target="_blank" id="author">Amira Alaa</a>
+                by <a href="https://www.upwork.com/freelancers/~01a11a163a8ee98a35" target="_blank" id="author">Raj & yash</a>
            </p>
        </div>
     </footer>
@@ -190,7 +193,7 @@
     let total = 0;
 
     cart.forEach(product => {
-        let price = parseFloat(product.price.replace('$', ''));
+        let price = parseFloat(product.price.replace(' ₹', ''));
         let productTotal = price * product.quantity;
         total += productTotal;
         summaryHtml += `
@@ -198,18 +201,19 @@
                 <img src="${product.images[0]}" width="100">
                 <p><strong>${product.name}</strong> x ${product.quantity}</p>
                 <p>Price: ${product.price}</p>
-                <p>Total: $${productTotal.toFixed(2)}</p>
+                <p>Total: ${productTotal.toFixed(2)}</p>
                 <hr>
             </div>
         `;
     });
 
-    summaryHtml += `<h3>Subtotal: $${total.toFixed(2)}</h3>`;
-    summaryHtml += `<h3>Delivery Fee: $70.00</h3>`;
-    summaryHtml += `<h2>Total Order: $${(total + 70).toFixed(2)}</h2>`;
+    summaryHtml += `<h3>Subtotal: ${total.toFixed(2)}</h3>`;
+    summaryHtml += `<h3>Delivery Fee: ₹70.00</h3>`;
+    summaryHtml += `<h2>Total Order: ₹${(total + 70).toFixed(2)}</h2>`;
 
     checkoutSummary.innerHTML = summaryHtml;
 };
+/*
 function sendOrderViaWhatsApp() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     if (cart.length === 0) return;
@@ -228,7 +232,7 @@ function sendOrderViaWhatsApp() {
     let total = 0;
 
     cart.forEach(product => {
-        let price = parseFloat(product.price.replace('$', ''));
+        let price = parseFloat(product.price.replace(' ₹', ''));
         let productTotal = price * product.quantity;
         total += productTotal;
 
@@ -236,9 +240,9 @@ function sendOrderViaWhatsApp() {
         message += `🖼 Image: ${product.images[0]}\n\n`;
     });
 
-    message += `🧾 *Subtotal:* $${total.toFixed(2)}\n`;
-    message += `🚚 *Delivery Fee:* $70.00\n`;
-    message += `💰 *Total:* $${(total + 70).toFixed(2)}\n\n`;
+    message += `🧾 *Subtotal:* ₹${total.toFixed(2)}\n`;
+    message += `🚚 *Delivery Fee:* ₹70.00\n`;
+    message += `💰 *Total:* ₹${(total + 70).toFixed(2)}\n\n`;
     message += `📦 *Please confirm the order.*`;
 
     let encodedMessage = encodeURIComponent(message);
@@ -247,7 +251,110 @@ function sendOrderViaWhatsApp() {
 
     window.open(whatsappURL, "_blank");
 }
-
-
+*/
 </script>
+<!-- Firebase CDN (IMPORTANT) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyC1T6859x4g0rRlYgQBzeQ24SdpWgQrpMQ",
+  authDomain: "manmodefits.firebaseapp.com",
+  databaseURL: "https://manmodefits-default-rtdb.firebaseio.com",
+  projectId: "manmodefits",
+  storageBucket: "manmodefits.firebasestorage.app",
+  messagingSenderId: "167586381336",
+  appId: "1:167586381336:web:dc2933a9e4025ed84a8d6d"
+};
+
+/* ✅ Initialize Firebase */
+firebase.initializeApp(firebaseConfig);
+
+/* ✅ Database Reference */
+var orderDB = firebase.database().ref("orders");
+
+/* ✅ SAVE ORDER FUNCTION */
+function saveOrderToFirebase(name, address, payment, total, cart) {
+    var newOrder = orderDB.push();
+
+    newOrder.set({
+        customer_name: name,
+        address: address,
+        payment_method: payment,
+        total_amount: total,
+        cart_items: cart,
+        createdAt: new Date().toString()
+    });
+}
+
+/* ✅ CHECKOUT BUTTON FUNCTION */
+function sendOrderViaWhatsApp() {
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length === 0) {
+        alert("Cart is empty");
+        return;
+    }
+
+    const name = document.getElementById('customer_name').value.trim();
+    const address = document.getElementById('customer_address').value.trim();
+    const payment = document.getElementById('payment_method').value;
+
+    if (!name || !address || !payment) {
+        alert("Please fill all customer details");
+        return;
+    }
+
+    let total = 0;
+
+    cart.forEach(product => {
+        let price = parseFloat(product.price.replace(' ₹', ''));
+        total += price * product.quantity;
+    });
+
+    total += 70; // delivery
+
+    /* ✅ SAVE TO FIREBASE */
+    saveOrderToFirebase(name, address, payment, total, cart);
+
+    /* ✅ WhatsApp message */
+    let message = `🛒 Order\nName: ${name}\nAddress: ${address}\nPayment: ${payment}\nTotal: ₹${total}`;
+    let url = `https://wa.me/8698978100?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+
+    alert("Order Saved Successfully ✅");
+}
+
+/* ✅ ONLINE PAY BUTTON */
+function onlinePayment() {
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const name = document.getElementById('customer_name').value.trim();
+    const address = document.getElementById('customer_address').value.trim();
+    const payment = "Prepaid";
+
+    if (!name || !address) {
+        alert("Fill customer details");
+        return;
+    }
+
+    let total = 0;
+
+    cart.forEach(product => {
+        let price = parseFloat(product.price.replace(' ₹', ''));
+        total += price * product.quantity;
+    });
+
+    total += 70;
+
+    /* ✅ SAVE TO FIREBASE */
+    saveOrderToFirebase(name, address, payment, total, cart);
+
+    /* ✅ Redirect */
+    window.location.href = "pay.html";
+}
+</script>
+
 </html>

@@ -6,9 +6,9 @@
         <meta name="description" content="Discover the latest trends in fashion for 
         women and men at SA FashionStyle. Shop our wide selection of clothes, bags,
         jewelry, and more. Elevate your style with our curated collections.">
-        <meta name="keywords" content="clothes, women, men, fashion, bags, jewelry, SA FashionStyle, latest trends, stylish clothing, accessories">
-        <meta name="author" content="SA_FashionStyle">
-        <link rel="icon" href="images/logo3.jpg" type="image/x-icon">
+        <meta name="keywords" content="clothes, women, men, fashion, bags, jewelry, manmodefits, latest trends, stylish clothing, accessories">
+        <meta name="author" content="manmodefits">
+        <link rel="icon" href="images/logo.jpg" type="image/x-icon">
         <!-- css -->
         <link rel="stylesheet" href="Style/login.css">
         <link rel="stylesheet" href="Style/main.css">
@@ -19,7 +19,7 @@
         <!-- icon -->
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <title>SA__FashionStyle</title>
+        <title>manmodefits</title>
     </head>
 <body>
     <header class="container" id="header">
@@ -33,7 +33,7 @@
                     <ion-icon name="logo-whatsapp"></ion-icon>
                 </a>
               </div>
-              <img src="images/logo_block.jpg" alt="page logo" id="logo">
+              <img src="images/logo.jpg" alt="page logo" id="logo">
               <div class="header_actions">
                 <div id="display_login">
                   <span id="user_name">Amira</span>
@@ -55,7 +55,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="products.html">Shop</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="signup.html">Contact</a></li>
                 </ul>
             </menu>
         </nav>
@@ -71,6 +71,9 @@
      
              <label for="email">Email</label>
              <input type="email" name="email" placeholder="Email" id="email">
+
+             <label for="password">Password</label>
+             <input type="password" name="password" placeholder="Password" id="password">
      
              <label for="phone">Phone Number</label>
              <input type="tel" name="phone" placeholder="Phone Number" id="phone">
@@ -95,7 +98,7 @@
              <input type="text" name="city" placeholder="City" id="city">
      
              <div class="submit">
-                 <button onclick="fun()" id="btn-submit">Submit</button> 
+                <button onclick="saveCustomer()" id="btn-submit">Submit</button>
                  <a href="signup.html" id="signup">Need an account? Sign up here</a>
              </div>  
          </div>
@@ -154,7 +157,8 @@
        <div class="footer-bottom">
            <p class="footer-company-name">
                © 2024 All right reserved.Made with <ion-icon name="heart"></ion-icon>
-                by <a href="https://www.upwork.com/freelancers/~01a11a163a8ee98a35" target="_blank" id="author">Amira Alaa</a>
+                by <a href="https://www.upwork.com/freelancers/~01a11a163a8ee98a35" target="_blank" id="author">Raj & yash
+                </a>
            </p>
        </div>
     </footer>
@@ -162,12 +166,72 @@
    <script src="JavaScript/validation.js"></script>
    <script src="JavaScript/cart.js"></script>
 </body>
-<script>
-   function fun(){
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword } 
+from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
 
-        window.location.href = 'index.html';
+// Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyC1T6859x4g0rRlYgQBzeQ24SdpWgQrpMQ",
+  authDomain: "manmodefits.firebaseapp.com",
+  projectId: "manmodefits"
+};
+
+// Init
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+// Save customer
+window.saveCustomer = async function () {
+
+    let fullname = document.getElementById("fullname").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let phone = document.getElementById("phone").value;
+    let gender = document.getElementById("gender").value;
+    let address = document.getElementById("address").value;
+    let country = document.getElementById("country").value;
+    let city = document.getElementById("city").value;
+
+    if (!fullname || !email || !password || !phone || !gender || !address || !country || !city) {
+        alert("Fill all details");
+        return;
     }
-</script>
 
-    
+    try {
+        // 🔹 Create Auth user
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+        const uid = userCredential.user.uid;
+
+        // 🔹 Save customer info using UID (BEST PRACTICE)
+        await setDoc(doc(db, "customers", uid), {
+            fullname,
+            email,
+            phone,
+            gender,
+            address,
+            country,
+            city,
+            createdAt: new Date()
+        });
+
+        // Save UID locally
+        localStorage.setItem("uid", uid);
+
+        alert("Customer data saved successfully ✅");
+
+        window.location.href = "index.html";
+
+    } catch (error) {
+        console.error(error);
+        alert("Error: " + error.message);
+    }
+};
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 </html>

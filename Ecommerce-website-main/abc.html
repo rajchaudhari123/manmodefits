@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Messages | Firebase</title>
+
+    <!-- Firebase SDK (IMPORTANT) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form id="contactForm">
+            <div class="alert">Your message sent ✅</div>
+
+            <div class="inputBox">
+                <input type="text" id="name" placeholder="Your name...." required />
+            </div>
+
+            <div class="inputBox">
+                <input type="email" id="emailid" placeholder="Your Email....." required />
+            </div>
+
+            <div class="inputBox">
+                <textarea id="msgContent" cols="30" rows="10" placeholder="Message" required></textarea>
+            </div>
+
+            <div class="inputBox">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+<script>
+/* 🔥 YOUR FIREBASE CONFIG (ONLY ONCE) */
+const firebaseConfig = {
+  apiKey: "AIzaSyC1T6859x4g0rRlYgQBzeQ24SdpWgQrpMQ",
+  authDomain: "manmodefits.firebaseapp.com",
+  databaseURL: "https://manmodefits-default-rtdb.firebaseio.com",
+  projectId: "manmodefits",
+  storageBucket: "manmodefits.firebasestorage.app",
+  messagingSenderId: "167586381336",
+  appId: "1:167586381336:web:dc2933a9e4025ed84a8d6d"
+};
+
+/* ✅ Initialize Firebase */
+firebase.initializeApp(firebaseConfig);
+
+/* ✅ Reference Database */
+var contactFormDB = firebase.database().ref("contactForm");
+
+/* ✅ Form Submit */
+document.getElementById("contactForm").addEventListener("submit", submitForm);
+
+function submitForm(e) {
+    e.preventDefault();
+
+    var name = getVal("name");
+    var email = getVal("emailid");
+    var message = getVal("msgContent");
+
+    saveMessages(name, email, message);
+
+    // show alert
+    document.querySelector(".alert").style.display = "block";
+
+    setTimeout(() => {
+        document.querySelector(".alert").style.display = "none";
+    }, 3000);
+
+    // reset form
+    document.getElementById("contactForm").reset();
+}
+
+/* ✅ Save Data */
+function saveMessages(name, email, message) {
+    var newMsg = contactFormDB.push();
+
+    newMsg.set({
+        name: name,
+        email: email,
+        message: message,
+        createdAt: new Date().toString()
+    });
+}
+
+/* ✅ Get Input Value */
+function getVal(id) {
+    return document.getElementById(id).value;
+}
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{height:100vh;display:flex;justify-content:center;align-items:center;}
+.container{width:90%;max-width:500px;padding:20px;border-radius:20px;box-shadow:0 5px 25px rgba(0,0,0,0.2);}
+.inputBox{margin:10px 0;}
+input, textarea{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+}
+button{
+    width:100%;
+    padding:10px;
+    background:#0077ff;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+}
+.alert{
+    display:none;
+    background:lightgreen;
+    padding:10px;
+    margin-bottom:10px;
+    text-align:center;
+}
+</style>
+
+</body>
+</html>

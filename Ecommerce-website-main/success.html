@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Success</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            margin-top: 100px;
+            background: #f9f9f9;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            width: 350px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: green;
+        }
+        button {
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .home { background: #333; color: white; }
+        .whatsapp { background: #25D366; color: white; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h1>✅ Payment Successful</h1>
+    <p>Thank you for your order!</p>
+
+    
+
+    <button class="whatsapp" onclick="sendOrder()">Confirm Order on WhatsApp</button>
+    <br>
+    <button class="home" onclick="goHome()">Back to Home</button>
+</div>
+
+<script>
+// Show amount
+let total = localStorage.getItem("order_total") || 0;
+document.getElementById("orderAmount").innerText = "Amount Paid: ₹" + total;
+
+// WhatsApp send
+function sendOrder() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    let message = `✅ *Payment Done*\n\n`;
+    message += `💰 Amount: ₹${total}\n\n`;
+
+    cart.forEach(p => {
+        message += `🛒 ${p.name} x ${p.quantity}\n`;
+    });
+
+    message += `\n📦 Please confirm my order`;
+
+    let url = "https://wa.me/8698978100?text=" + encodeURIComponent(message);
+    window.open(url, "_blank");
+
+    // Clear cart after sending
+    localStorage.removeItem("cart");
+}
+
+// Go home
+function goHome() {
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

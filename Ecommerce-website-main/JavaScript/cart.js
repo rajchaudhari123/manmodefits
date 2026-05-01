@@ -45,7 +45,7 @@ function addToCart(productId,inputQuantity = 1) {
 function addCartToHTML() {
     let content = ``;
     cart.forEach((product, index) => {
-        let price = parseFloat(product.price.replace('$', ''));
+        let price = parseFloat(product.price.replace('₹', ''));
         let totalPrice = price * product.quantity;
         content += `
         <div class="cart_product">
@@ -56,7 +56,7 @@ function addCartToHTML() {
                 <div class="top_card">
                     <div class="left_card">
                         <h4 class="product_name">${product.name}</h4>
-                        <span class="product_price">${product.price}</span>
+                        <span class="product_price">₹${product.price}</span>
                     </div>
                     <div class="remove_product" onclick="removeFromCart(${index})">
                         <ion-icon name="close-outline"></ion-icon>
@@ -69,7 +69,7 @@ function addCartToHTML() {
                             class="product_count"  value=${product.quantity}>
                         <button  class="counts_btns plus" onclick="increaseQuantity(${index})">+</button>
                     </div>
-                    <span class="total_price">$${totalPrice}.00</span>
+                    <span class="total_price">₹${totalPrice}.00</span>
                 </div>
             </div>
         </div>`;
@@ -101,10 +101,10 @@ function decreaseQuantity(index) {
 
 function updateTotalPrice() {
     let total = cart.reduce((sum, product) => {
-        let price = parseFloat(product.price.replace('$', ''));
+        let price = parseFloat(product.price.replace('₹', ''));
         return sum + (price * product.quantity);
     }, 0);
-    totalPrice.innerHTML = `$${total.toFixed(2)}`;
+    totalPrice.innerHTML = `₹${total.toFixed(2)}`;
     localStorage.setItem("total price" , total + 70);
     return total;
 }
@@ -138,8 +138,8 @@ function checkCartPage(total,totalQuantity){
     if (window.location.pathname.includes("cartPage.html")) {
         if (cart.length == 0) {
             cartItemsCount.innerHTML = `(0 items)`;
-            document.getElementById("Subtotal").innerHTML = `$0.00`;
-            document.getElementById("total_order").innerHTML = `$0.00`;
+            document.getElementById("Subtotal").innerHTML = `0.00 ₹`;
+            document.getElementById("total_order").innerHTML = `0.00 ₹`;
         }
         else{
             cartItemsCount.innerHTML = `(${totalQuantity} items)`;
@@ -149,9 +149,9 @@ function checkCartPage(total,totalQuantity){
 }
 function displayInCartPage(total){
     let subTotal = document.getElementById("Subtotal");
-    subTotal.innerHTML = `$${total.toFixed(2)}`;
-    let totalOrder= parseFloat(subTotal.innerHTML.replace('$', '')) + 70;
-    document.getElementById("total_order").innerHTML = `$${totalOrder.toFixed(2)}`;
+    subTotal.innerHTML = `₹${total.toFixed(2)}`;
+    let totalOrder= parseFloat(subTotal.innerHTML.replace('₹', '')) + 70;
+    document.getElementById("total_order").innerHTML = `₹${totalOrder.toFixed(2)}`;
 }
 
 function abcCart(){
