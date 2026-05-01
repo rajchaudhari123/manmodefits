@@ -5,7 +5,7 @@ window.addEventListener("load", function () {
     addDate();
   
     let total = localStorage.getItem('total price') || "0.00";
-    document.getElementById("total_price").innerText = `$${parseFloat(total).toFixed(2)}`;
+    document.getElementById("total_price").innerText = `₹${parseFloat(total).toFixed(2)}`;
   });
   
   function showCheckAnimation() {
@@ -59,11 +59,11 @@ window.addEventListener("load", function () {
   
     // Format cart items
     let items = cart.map((item, i) => {
-      return `${i + 1}) ${item.name} - Qty: ${item.quantity} - Price: $${item.price}`;
+      return `${i + 1}) ${item.name} - Qty: ${item.quantity} - Price: ₹${item.price}`;
     }).join('\n');
   
     // WhatsApp message
-    const message = `🛍️ *New Order Received!*\n\n👤 *Name:* ${user.name}\n📞 *Phone:* ${user.phone}\n🏠 *Address:* ${user.address}\n\n🛒 *Items Ordered:*\n${items}\n\n💰 *Total:* $${parseFloat(total).toFixed(2)}\n📅 *Date:* ${new Date().toLocaleDateString()}`;
+    const message = `🛍️ *New Order Received!*\n\n👤 *Name:* ${user.name}\n📞 *Phone:* ${user.phone}\n🏠 *Address:* ${user.address}\n\n🛒 *Items Ordered:*\n${items}\n\n💰 *Total:* ${parseFloat(total).toFixed(2)} ₹\n📅 *Date:* ${new Date().toLocaleDateString()}`;
   
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
@@ -79,8 +79,8 @@ window.addEventListener("load", function () {
   
     // Example cart items (this should be generated dynamically)
     const cartItems = [
-      { name: "Black T-shirt", qty: 2, price: "$20" },
-      { name: "Leather Bag", qty: 1, price: "$50" }
+      { name: "Black T-shirt", qty: 2, price: "20.00" },
+      { name: "Leather Bag", qty: 1, price: "50.00" }
     ];
   
     // Format message

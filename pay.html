@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Style/cartPage.css">
+    <link rel="stylesheet" href="Style/main.css">
+
+</head>
+<body>
+
+    <div id="upi_qr_section" style="text-align:center; margin-top:20px;">
+    <h3>Scan & Pay</h3>
+    <img id="upi_qr" src="" width="200" style="border:1px solid #ccc; padding:10px;">
+    <p id="upi_amount_text"></p>
+</div>
+<button class="checkout" onclick="window.location.href='index.html'" > online pay</button>
+<button onclick="goToSuccess()">I Have Paid</button>
+<script>
+function generateUPIQR() {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length === 0) return;
+
+    let total = 0;
+
+    cart.forEach(product => {
+        let price = parseFloat(product.price.replace(' ₹', ''));
+        total += price * product.quantity;
+    });
+
+    total += 70; // delivery
+
+    // 🔹 CHANGE THIS
+    let upiID = "yourupi@upi";
+
+    let name = "Manmodefits";
+
+    let upiURL = `upi://pay?pa=${upiID}&pn=${name}&am=${total}&cu=INR`;
+
+    // QR Generator API
+    let qrURL = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiURL)}`;
+
+    document.getElementById("upi_qr").src = qrURL;
+    document.getElementById("upi_amount_text").innerText = "Amount: ₹" + total;
+}
+
+// Run on page load
+window.onload = () => {
+    generateUPIQR();
+};
+
+
+function goToSuccess() {
+    window.location.href = "success.html";
+}
+
+</script>
+    
+</body>
+</html>

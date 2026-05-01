@@ -13,7 +13,7 @@
     {
         "id": 2,
         "name": "Miley Triangle Hair Scarf",
-        "price": "$22.00",
+        "price": " 200.00 ₹",
         "images": [
             "images/a2.jpg",
             "images/a3.jpg",
@@ -26,7 +26,7 @@
     {
         "id": 3,
         "name": "Platform Canvas Sneakers",
-        "price": "$77.00",
+        "price": " 720.00 ₹",
         "images": [
             "images/a3.jpg"
         ],
@@ -37,7 +37,7 @@
     {
         "id": 4,
         "name": "Quilted Heeled Mule Sandal",
-        "price": "$128.00",
+        "price": " 600.00 ₹",
         "images": [
             "images/a4.jpg"
         ],
@@ -49,7 +49,7 @@
     {
         "id": 6,
         "name": "Adilette Slide Sandal",
-        "price": "$85.00",
+        "price": " 850.00 ₹",
         "images": [
             "images/a6.jpg",
             "images/Accessories/Adilette-Slide-Sandal_color_01.webp"
@@ -61,7 +61,7 @@
     {
         "id": 7,
         "name": "Pieces Short Sleeve Sweater",
-        "price": "$100.00",
+        "price": " 1000.00 ₹",
         "images": [
             "images/a7.jpg",
             "images/woman/Pieces-short-sleeve-sweater_02.webp",
@@ -77,7 +77,7 @@
     {
         "id": 11,
         "name": "Straw Floppy Hat",
-        "price": "$54.00",
+        "price": " 550.00 ₹",
         "images": [
             "images/a11.jpg"
         ],
@@ -88,7 +88,7 @@
     {
         "id": 12,
         "name": "Cat-Eye Glasses 20257",
-        "price": "$86.00",
+        "price": " 850.00 ₹",
         "images": [
             "images/a12.jpg"
         ],
@@ -99,7 +99,7 @@
     {
         "id": 13,
         "name": "Pride Sport Hip Pack",
-        "price": "$39.00",
+        "price": " 400.00 ₹",
         "images": [
             "images/shirt1.jpg",
             "images/Bags/Pride-Sport-Hip-Pack-_03.webp"
@@ -111,7 +111,7 @@
     {
         "id": 14,
         "name": "Dance Bag Nylon",
-        "price": "$18.00",
+        "price": " 1000.00 ₹",
         "images": [
             "images/shirt2.jpg",
             "images/Bags/p27-1_1bcb95c6-a3da-4de5-b15e-ec08d4cb84b9.webp"

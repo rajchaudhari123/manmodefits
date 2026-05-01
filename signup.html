@@ -6,9 +6,9 @@
         <meta name="description" content="Discover the latest trends in fashion for 
         women and men at SA FashionStyle. Shop our wide selection of clothes, bags,
         jewelry, and more. Elevate your style with our curated collections.">
-        <meta name="keywords" content="clothes, women, men, fashion, bags, jewelry, SA FashionStyle, latest trends, stylish clothing, accessories">
-        <meta name="author" content="SA_FashionStyle">
-        <link rel="icon" href="images/logo3.jpg" type="image/x-icon">
+        <meta name="keywords" content="clothes, women, men, fashion, bags, jewelry, manmodefits, latest trends, stylish clothing, accessories">
+        <meta name="author" content="manmodefits">
+        <link rel="icon" href="images/logo.jpg" type="image/x-icon">
         <link rel="stylesheet" href="Style/main.css">
         <link rel="stylesheet" href="Style/login.css">
         <!-- Google font -->
@@ -18,7 +18,7 @@
         <!-- icon -->
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <title>SA__FashionStyle</title>
+        <title>manmodefits</title>
     </head>
 <body>
     <header class="container" id="header">
@@ -48,7 +48,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="products.html">Shop</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="signup.html">Contact</a></li>
                 </ul>
             </menu>
         </nav>
@@ -62,7 +62,7 @@
             <input type="text" name="email" placeholder="Email" id="email">
             <input type="password" name="Password" placeholder="Password" id="password">
             <div class="submit">
-                <button id="btn-login">Create</button> 
+                <button onclick="saveUser()" id="btn-submit">Create</button>
                 <a href="index.html" id="signup">Return to store</a>
             </div>  
         </div>
@@ -100,9 +100,69 @@
        <div class="footer-bottom">
            <p class="footer-company-name">
                © 2024 All right reserved.Made with <ion-icon name="heart"></ion-icon>
-                by <a href="https://www.upwork.com/freelancers/~01a11a163a8ee98a35" id="author">Amira Alaa</a>
+                by <a href="https://www.upwork.com/freelancers/~01a11a163a8ee98a35" id="author">Raj & Yash</a>
            </p>
        </div>
    </footer>
 </body>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword } 
+from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
+
+// Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyC1T6859x4g0rRlYgQBzeQ24SdpWgQrpMQ",
+  authDomain: "manmodefits.firebaseapp.com",
+  projectId: "manmodefits",
+  storageBucket: "manmodefits.firebasestorage.app",
+  messagingSenderId: "167586381336",
+  appId: "1:167586381336:web:dc2933a9e4025ed84a8d6d"
+};
+
+// Init
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+// Global function
+window.saveUser = async function () {
+
+    let fname = document.getElementById("fname").value;
+    let lname = document.getElementById("lname").value;
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    if (!fname || !lname || !email || !password) {
+        alert("Please fill all fields");
+        return;
+    }
+
+    try {
+        // 🔹 Create user in Firebase Auth
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+        alert("User created successfully ✅");
+
+        // 🔹 Save extra data in Firestore
+        await addDoc(collection(db, "users"), {
+            uid: userCredential.user.uid,
+            firstName: fname,
+            lastName: lname,
+            email: email,
+            createdAt: new Date()
+        });
+
+        alert("User data saved ✅");
+
+        window.location.href = "index.html";
+
+    } catch (error) {
+        console.error(error);
+        alert("Error: " + error.message);
+    }
+};
+</script>
+
 </html>
