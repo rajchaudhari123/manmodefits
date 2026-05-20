@@ -3,291 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover the latest trends in fashion for 
-    women and men at SA FashionStyle. Shop our wide selection of clothes, bags,
-    jewelry, and more. Elevate your style with our curated collections.">
-    <meta name="keywords" content="clothes, women, men, fashion, bags, jewelry, SA FashionStyle, latest trends, stylish clothing, accessories">
-    <meta name="author" content="SA_FashionStyle">
-    <link rel="icon" href="images/logo3.jpg" type="image/x-icon">
-    <!-- css -->
-    <link rel="stylesheet" href="Style/style.css">
-    <link rel="stylesheet" href="Style/main.css">
-    <!-- Google font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <!-- icon -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <title>MenModeFits</title>
+    <title>Birthday Surprise - Coming Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f953c6 0%, #b91d73 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .countdown-container {
+            text-align: center;
+            color: white;
+            padding: 40px 30px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            max-width: 800px;
+            width: 90%;
+        }
+
+        .countdown-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .countdown-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            min-width: 120px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .countdown-item:hover { transform: translateY(-5px); }
+
+        .countdown-value {
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            color: #ffb3d9;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .countdown-label {
+            font-size: 1rem;
+            margin-top: 5px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .enter-btn {
+            padding: 15px 50px;
+            background: linear-gradient(45deg, #ff69b4, #ff9ed2);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+            position: relative;
+            overflow: hidden;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .enter-btn.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .enter-btn.active:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 105, 180, 0.7);
+        }
+
+        .enter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .enter-btn.active:hover::before { left: 100%; }
+
+        .floating-hearts {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 182, 217, 0.8);
+            animation: float-up 10s linear infinite;
+        }
+
+        @keyframes float-up {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .access-info {
+            margin-top: 25px;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .access-info i { color: #ffb3d9; margin-right: 8px; }
+
+        .message {
+            margin-top: 18px;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .countdown-title { font-size: 2.5rem; }
+            .countdown-timer { gap: 10px; }
+            .countdown-item { min-width: 80px; padding: 15px; }
+            .countdown-value { font-size: 2rem; }
+            .enter-btn { padding: 12px 40px; font-size: 1rem; }
+        }
+    </style>
 </head>
 <body>
-    <header class="container" id="header">
-        <div class="header_top">
-              <div class="header_social">
-                <a href="https://www.instagram.com/manmode_fits_?igsh=anRtMTBxd29wN2ho" target="_blank">
-                    <ion-icon name="logo-instagram"></ion-icon>
-                </a>
-                
-                <a href="https://chat.whatsapp.com/GuZXe5aPTlKAXLKnvWzPSm" target="_blank">
-                    <ion-icon name="logo-whatsapp"></ion-icon>
-                </a>
-              </div>
-              <img src="images/logo3.jpg" alt="page logo" id="logo" >
-              <div class="header_actions">
-                   <div id="display_login">
-                     <a href="#" id="logout" onclick="logout();">
-                       <span id="signout">Sign Out</span>
-                       <ion-icon name="log-out-outline"></ion-icon>
-                     </a>
-                   </div>
-                   <a href="login.html" title="Login" id="login_btn">
-                     <ion-icon name="person-circle-outline"></ion-icon>
-                   </a>
-                   <a href="#" class="icon-cart">
-                     <ion-icon name="cart-outline"></ion-icon>
-                     <span id="cart-counter">0</span>
-                   </a>
-              </div>
-        </div>
-        <nav id="navbar">
-            <menu>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="products.html">Shop</a></li>
-                    <li><a href="login.html">Contact</a></li>
-                </ul>
-            </menu>
-        </nav>
-    </header>
-    <button id="scrollBtn"><ion-icon name="arrow-up-outline" id="btn-up"></ion-icon></button>
-    <!-- slider -->
-    <div class="slider">
-        <div class="slides">
-            <div class="slide">
-                <div class="slide-content">
-                   <img src="images/hero1.jpg">
-                   <div class="text">
-                    <h2>Get up to 30% Off New Arrivals</h2>
-                    <a href="products.html" class="shop-btn">Shop Now</a>
-                   </div>
-                </div>
-                <div class="slide-content">
-                    <img src="images/hero4.jpg">
-                    <div class="text">
-                     <h2>Get up to 30% Off New Arrivals</h2>
-                     <a href="products.html" class="shop-btn">Shop Now</a>
-                    </div>
-                 </div>
-                 <div class="slide-content">
-                    <img src="images/hero5.jpg">
-                    <div class="text">
-                     <h2>Get up to 30% Off New Arrivals</h2>
-                     <a href="products.html" class="shop-btn">Shop Now</a>
-                    </div>
-                 </div>
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <div class="countdown-container">
+        <h1 class="countdown-title">Birthday Surprise 💕</h1>
+        <p class="countdown-subtitle">Your special gift unlocks at midnight tonight!</p>
+
+        <div class="countdown-timer">
+            <div class="countdown-item">
+                <span class="countdown-value" id="hours">00</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="minutes">00</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-value" id="seconds">00</span>
+                <span class="countdown-label">Seconds</span>
             </div>
         </div>
-        <div class="navigation">
-            <button class="prev" onclick="prevSlider();">
-                <ion-icon name="arrow-back-outline"></ion-icon>
-            </button>
-            <button class="next" onclick="nextSlider();">
-                <ion-icon name="arrow-forward-outline"></ion-icon>
-            </button>
+
+        <button class="enter-btn" id="enterBtn">
+            <i class="fas fa-lock"></i> Enter Website
+        </button>
+
+        <div class="access-info">
+            <p><i class="fas fa-heart"></i> Something magical is waiting for you at midnight 🌙</p>
         </div>
+
+        <p class="message">Get ready for a birthday you will never forget! 💖</p>
     </div>
-    <div class="hero_for_phone">
-        <div class="hero-content">
-            <img src="images/hero1.jpg">
-            <div class="text">
-             <h2>Mini Collection</h2>
-             <p>Colour the summer in hot fuschia, bubblegum pink</p>
-             <a href="products.html" class="shop-btn">Shop Now</a>
-            </div>
-         </div>
-    </div>
-    <!-- cart -->
-    <div class="cart-section">
-        <div class="cart-header">
-            <h2>SHOPPING CART</h2>
-            <div class="closeCart">
-                <ion-icon name="close-outline" id="closeCart"></ion-icon>
-            </div>
-        </div>
-        <div class="cart_products">
-              <!-- add cart products in js -->
-        </div>
-        <div class="cart_total">
-            <h3>Total:</h3>
-            <span id="total_price"></span>
-        </div>
-        <div class="btn_control">
-            <button class="viewCart" onclick="viewCart();">View Cart</button>
-            <button class="checkout" onclick="viewCart();">Check Out</button>
-        </div>
-    </div>
-    <!-- info -->
-    <div class="information">
-        <div class="info">
-            <div class="info-icon">
-                <img src="images/global-distribution.png" alt="global-distribution" >
-            </div>
-            <div class="info-text">
-                <h3>Shipping Worldwide</h3>
-                <p> Free shipping on all US order or order above 999 ₹</p>
-            </div>
-        </div>
-        <div class="info">
-            <div class="info-icon">
-                <img src="images/delivery-status.png" alt="delivery-status" >
-            </div>
-            <div class="info-text">
-                <h3>7 Days Return</h3>
-                <p>Simply return it within 30 days for an exchange.</p>
-            </div>
-        </div>
-        <div class="info">
-            <div class="info-icon">
-                <img src="images/check.png" alt="Security" >
-            </div>
-            <div class="info-text">
-                <h3>Security Payment</h3>
-                <p>We ensure secure payment with PEV</p>
-            </div>
-        </div>
-        <div class="info">
-            <div class="info-icon">
-                <img src="images/24-hours-support.png" alt="24-hours-support" >
-            </div>
-            <div class="info-text">
-                <h3>24/7 Support</h3>
-                <p>Contact us 24 hours a day, 7 days a week</p>
-            </div>
-        </div>
-    </div>
-    <!-- Top Products -->
-    <div class="top_products">
-        <div class="container">
-            <div class="header">
-                <h3>Trending Products</h3>
-                <p>Follow the most popular trends and get exclusive items from Foesta shop.</p>
-            </div>
-            <div class="products">
-              <!-- add by js -->
-            </div>
-        </div>
-    </div>
-    <!-- collection -->
-    <div class="collection" id="collection" aria-label="collection" data-section>
-        <div class="container">
-          <ul class="collection-list">
-            <li>
-              <div class="collection-card has-before hover:shine">
 
-                <h2 class="card-title">Summer Collection</h2>
+    <script>
+        // Floating Hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = Math.random() * 3 + 7 + 's';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            document.getElementById('floatingHearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 10000);
+        }
+        setInterval(createHeart, 500);
 
-                <p class="card-text">Starting at $17.99</p>
+        // Countdown to midnight tonight
+        function getMidnightTonight() {
+            const now = new Date();
+            const midnight = new Date(now);
+            midnight.setHours(24, 0, 0, 0); // next midnight
+            return midnight.getTime();
+        }
 
-                <a href="products.html" class="btn-link">
-                  <span>Shop Now</span>
+        const endTime = getMidnightTonight();
 
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </a>
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = endTime - now;
 
-                <div class="has-bg-image" style="background-image: url('images/a7.jpg')"></div>
-                </div>
-            </li>
+            if (distance <= 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
 
-            <li>
-              <div class="collection-card has-before hover:shine">
+                const enterBtn = document.getElementById('enterBtn');
+                enterBtn.classList.add('active');
+                enterBtn.innerHTML = '<i class="fas fa-unlock"></i> Enter Website 💕';
+                return;
+            }
 
-                <h2 class="card-title">What’s New?</h2>
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                <p class="card-text">Get the glow</p>
+            document.getElementById('hours').textContent = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').textContent = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').textContent = seconds < 10 ? '0' + seconds : seconds;
+        }
 
-                <a href="#" class="btn-link">
-                  <span>Discover Now</span>
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
 
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </a>
-
-                <div class="has-bg-image" style="background-image: url('images/shirt3.jpg')"></div>
-              </div>
-            </li>
-
-            <li>
-              <div class="collection-card has-before hover:shine">
-
-                <h2 class="card-title">Buy 1 Get 1</h2>
-
-                <p class="card-text">Starting at $7.99</p>
-
-                <a href="#" class="btn-link">
-                  <span>Discover Now</span>
-                  <ion-icon name="arrow-forward" aria-hidden="true"></ion-icon>
-                </a>
-
-                <div class="has-bg-image" style="background-image: url('images/hero1.jpg')"></div>
-
-              </div>
-            </li>
-
-          </ul>
-        </div>
-    </div>
-    <!-- news -->
-    <div class="news hight">
-        <div class="news-text">
-            <h4>Newsletter</h4>
-            <p>
-                Subscribe to our newsletter and get 20% off your first purchase
-            </p>
-        </div>
-        <div class="Subscribe-form">
-            <input type="email" name="email" placeholder="Enter Your Email" autocomplete="off">
-            <button type="submit" value="submit">
-                <img src="images/send.png" alt="send-data" width="30"/>
-            </button>
-        </div>
-    </div>
-    <footer class="footer">
-         <div class="footer-top">
-            <div class="footer-logo">
-                <img src="images/logo2.jpg" alt="logo" width="140">
-                <p>The customer is at the heart of our unique business model, which includes design.</p>
-            </div>
-            <div class="footer-list">
-                <div class="list">
-                    <h4>SHOPPING</h4>
-                    <ul>
-                        <li><a href="#">Clothing Store</a></li>
-                        <li><a href="#">Trending Shoes</a></li>
-                        <li><a href="#">Accessories</a></li>
-                        <li><a href="#">Sale</a></li>
-                    </ul>
-                </div>
-                <div class="list">
-                    <h4>Customer Services</h4>
-                    <ul>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Payment Methods</a></li>
-                        <li><a href="#">Delivary</a></li>
-                        <li><a href="#">Return & Exchanges</a></li>
-                    </ul>
-                </div>
-    
-            </div>
-         </div>
-        <div class="footer-bottom">
-            <p class="footer-company-name">
-                © 2024 All right reserved.Made with <ion-icon name="heart"></ion-icon>
-                 by <a href="https://www.upwork.com/freelancers/~01a11a163a8ee98a35" id="author">Raj </a>
-            </p>
-        </div>
-    </footer>
-    <script src="JavaScript/index.js"></script>
-    <script src="JavaScript/main.js"></script>
-    <script src="JavaScript/cart.js"></script>
+        // Enter button
+        document.getElementById('enterBtn').addEventListener('click', function() {
+            if (this.classList.contains('active')) {
+                window.location.href = 'birthday.html';
+            }
+        });
+    </script>
 </body>
 </html>
